@@ -9,18 +9,22 @@
 ```bash
 npm install --save @kazukinagata/react-nps
 ```
+or
+```bash
+yarn add @kazukinagata/react-nps
+```
 
 ## Usage
 
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from '@kazukinagata/react-nps'
+import NPS from '@kazukinagata/react-nps'
 import '@kazukinagata/react-nps/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <NPS />
   }
 }
 ```
