@@ -1,11 +1,11 @@
 {
   "name": "@kazukinagata/react-nps-typescript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compnent for gathering Net Promoter Score surveys",
   "author": "kazukinagata",
   "license": "MIT",
   "repository": "https://github.com/kazukinagata/react-nps.git",
-  "homepage":"https://kazukinagata.github.io/react-nps/",
+  "homepage": "https://kazukinagata.github.io/react-nps/",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
