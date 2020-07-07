@@ -1,7 +1,7 @@
 import React from 'react'
 
-import NPS from '@kazukinagata/react-nps'
-import '@kazukinagata/react-nps/dist/index.css'
+import NPS from '@kazukinagata/react-nps-typescript'
+import '@kazukinagata/react-nps-typescript/dist/index.css'
 
 const App = () => {
   const [score, setScore] = React.useState<number | null>(null)
