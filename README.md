@@ -22,10 +22,18 @@ import React, { Component } from 'react'
 import NPS from '@kazukinagata/react-nps'
 import '@kazukinagata/react-nps/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <NPS />
-  }
+const Example = () => {
+  const [score, setScore] = React.useState<number | null>(null)
+  const [dismissed, setDismissed] = React.useState(false)
+
+  return (
+    <NPS
+      score={score}
+      dismissed={dismissed}
+      onSubmit={(score) => {console.log(`clicked ${score}`); setScore(score)}}
+      onDismissed={() => setDismissed(true)}
+    />
+  )
 }
 ```
 

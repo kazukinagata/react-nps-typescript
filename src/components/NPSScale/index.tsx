@@ -5,10 +5,18 @@ const MIN = 0
 const MAX = 10
 
 type Props = {
+  score: number | null
+  worstLabel?: string
+  bestLabel?: string
   onSubmit?: (value: number) => void
 }
-export default function NPSScale({onSubmit}: Props) {
-  const [value, setValue] = React.useState<number | null>(null)
+export default function NPSScale({
+  score,
+  worstLabel = `Not at all likely`,
+  bestLabel = `Extremely likely`,
+  onSubmit
+}: Props) {
+  const [value, setValue] = React.useState<number | null>(score)
   const handleMouseEnter = (value: number) => {
     setValue(value)
   }
@@ -24,7 +32,9 @@ export default function NPSScale({onSubmit}: Props) {
         {range(MIN, MAX).map((i) => (
           <div
             key={i}
-            className={`${styles.value} ${value !== null && value >= i ? styles.selected : ''}`}
+            className={`${styles.value} ${
+              value !== null && value >= i ? styles.selected : ''
+            }`}
             onMouseEnter={() => handleMouseEnter(i)}
             onMouseLeave={handleMouseLeave}
             onClick={() => handleClick(i)}
@@ -34,13 +44,13 @@ export default function NPSScale({onSubmit}: Props) {
         ))}
       </div>
       <div className={styles.legend}>
-        <div className={`${styles.label} ${styles.left}`}>全くない</div>
-        <div className={`${styles.label} ${styles.right}`}>非常にある</div>
+        <div className={`${styles.label} ${styles.left}`}>{worstLabel}</div>
+        <div className={`${styles.label} ${styles.right}`}>{bestLabel}</div>
       </div>
     </div>
   )
 }
 
 function range(start: number, end: number) {
-  return Array.from({length: end - start + 1}).map((_, idx) => start + idx)
+  return Array.from({ length: end - start + 1 }).map((_, idx) => start + idx)
 }

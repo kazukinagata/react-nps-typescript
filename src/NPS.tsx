@@ -3,35 +3,32 @@ import NPSScale from './components/NPSScale'
 import styles from './styles.module.css'
 type Props = {
   animated?: boolean
-  service?: string
+  dismissed?: boolean
+  score?: number | null
+  question?: string
+  thanksMessage?: string
+  scaleWorstLabel?: string
+  scaleBestLabel?: string
   onSubmit?: (score: number) => void
-  onDismissed?: (score: number | null) => void
+  onDismissed?: () => void
 }
 export function NPS({
   animated = true,
-  service,
+  question = `How likely are you to recommend us to your friends and colleagues?`,
+  thanksMessage = `Thank you for your feedback!`,
+  dismissed,
+  score = null,
+  scaleWorstLabel,
+  scaleBestLabel,
   onSubmit,
   onDismissed
 }: Props) {
-  const [dismissed, setDismissed] = React.useState(false)
-  const [score, setScore] = React.useState<number | null>(null)
-  const message = service
-    ? `あなたはこの${service}を友人知人にどのくらい勧める可能性がありますか？`
-    : 'あなたはこの商品・サービスを友人知人にどのくらい勧める可能性がありますか？'
-
   const handleDismiss = () => {
-    setDismissed(true)
+    onDismissed && onDismissed()
   }
   const handleSubmit = (score: number) => {
-    setScore(score)
+    onSubmit && onSubmit(score)
   }
-  React.useEffect(() => {
-    onSubmit && score !== null && onSubmit(score)
-  }, [score, onSubmit])
-
-  React.useEffect(() => {
-    onDismissed && onDismissed(score)
-  }, [dismissed, setDismissed, onDismissed])
 
   return dismissed ? null : (
     <div className={`${styles.root} ${animated ? styles.animated : ''}`}>
@@ -40,11 +37,16 @@ export function NPS({
       </button>
 
       {score ? (
-        <div className={styles.inner}>フィードバックありがとうございました！</div>
+        <div className={styles.inner}>{thanksMessage}</div>
       ) : (
         <div className={styles.inner}>
-          <p className={styles.message}>{message}</p>
-          <NPSScale onSubmit={handleSubmit} />
+          <p className={styles.message}>{question}</p>
+          <NPSScale
+            worstLabel={scaleWorstLabel}
+            bestLabel={scaleBestLabel}
+            score={score}
+            onSubmit={handleSubmit}
+          />
         </div>
       )}
     </div>
