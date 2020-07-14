@@ -1,5 +1,6 @@
 .root {
-  width: 418px;
+  width: auto;
+  max-width: 418px;
   margin: 0px auto;
 }
 .value {
