@@ -1,6 +1,6 @@
 {
-  "short_name": "@kazukinagata/react-nps",
-  "name": "@kazukinagata/react-nps",
+  "short_name": "@kazukinagata/react-nps-typescript",
+  "name": "@kazukinagata/react-nps-typescript",
   "icons": [
     {
       "src": "favicon.ico",
