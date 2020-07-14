@@ -1,6 +1,6 @@
 {
   "name": "@kazukinagata/react-nps-typescript",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Compnent for gathering Net Promoter Score surveys",
   "author": "kazukinagata",
   "license": "MIT",
